@@ -24,8 +24,32 @@ This is a fully functional calculator with a graphical user interface built usin
 
 - **Language**: Java
 - **GUI Framework**: Java Swing
-- **Build Tool**: Maven
+- **Build Tool**: Java Compiler
 - **Development Environment**: NetBeans IDE
+
+## Running the Application
+
+There are two ways to run this calculator:
+
+### Method 1: Using NetBeans IDE
+1. Open NetBeans IDE
+2. File -> Open Project -> Select the project folder
+3. Right-click on the project in the Project Explorer
+4. Click "Run" or press F6
+
+### Method 2: Using Command Line
+1. Make sure you have Java JDK installed (Java 16 or later)
+2. Open terminal/command prompt
+3. Navigate to the project directory
+4. Compile the code:
+   ```bash
+   mkdir -p target/classes
+   javac -d target/classes src/main/java/com/mycompany/calculatorj/Calculator.java
+   ```
+5. Run the application:
+   ```bash
+   java -cp target/classes com.mycompany.calculatorj.Calculator
+   ```
 
 ## Project Structure
 
@@ -43,14 +67,6 @@ This calculator project holds special significance as it was my first Java appli
 - GUI development
 - Basic error handling
 - User input processing
-
-## Building and Running
-
-To run this project:
-1. Ensure you have Java JDK installed
-2. Clone this repository
-3. Open the project in NetBeans IDE
-4. Build and Run the project
 
 ## Screenshots
 
