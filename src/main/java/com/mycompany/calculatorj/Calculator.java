@@ -5,6 +5,10 @@
 package com.mycompany.calculatorj;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A calculator program which figures solves basic math operations
@@ -34,10 +38,60 @@ public class Calculator extends javax.swing.JFrame {
     private double result = 0;
 
     /**
+     * Stores the memory value for M+, M-, MR operations.
+     */
+    private double memory = 0;
+
+    /**
+     * Stores the calculation history.
+     */
+    private List<String> history = new ArrayList<>();
+
+    /**
+     * Flag to indicate if the calculator is in scientific mode.
+     */
+    private boolean scientificMode = false;
+
+    /**
      * Creates new form Calculator
      */
     public Calculator() {
         initComponents();
+        setupKeyboardListener();
+    }
+
+    /**
+     * Sets up keyboard listener for number and operation inputs
+     */
+    private void setupKeyboardListener() {
+        this.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char key = e.getKeyChar();
+                if (Character.isDigit(key)) {
+                    Display.setText(Display.getText() + key);
+                } else if (key == '+') {
+                    ButtonAddActionPerformed(null);
+                } else if (key == '-') {
+                    ButtonSubActionPerformed(null);
+                } else if (key == '*' || key == 'x' || key == 'X') {
+                    ButtonTimesActionPerformed(null);
+                } else if (key == '/') {
+                    ButtonDivActionPerformed(null);
+                } else if (key == '=' || key == KeyEvent.VK_ENTER) {
+                    ButtonEqualActionPerformed(null);
+                } else if (key == '.') {
+                    ButtonDotActionPerformed(null);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        this.setFocusable(true);
     }
 
     /**
@@ -69,8 +123,26 @@ public class Calculator extends javax.swing.JFrame {
         ButtonEqual = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Display = new javax.swing.JTextArea();
+        
+        // New Scientific Calculator Buttons
+        ButtonSin = new javax.swing.JButton();
+        ButtonCos = new javax.swing.JButton();
+        ButtonTan = new javax.swing.JButton();
+        ButtonSqrt = new javax.swing.JButton();
+        ButtonPercent = new javax.swing.JButton();
+        
+        // Memory Function Buttons
+        ButtonMPlus = new javax.swing.JButton();
+        ButtonMMinus = new javax.swing.JButton();
+        ButtonMR = new javax.swing.JButton();
+        ButtonMC = new javax.swing.JButton();
+
+        // History Display
+        historyDisplay = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Scientific Calculator");
 
         Button7.setText("7");
         Button7.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +269,76 @@ public class Calculator extends javax.swing.JFrame {
                 ButtonEqualActionPerformed(evt);
             }
         });
+
+        // Configure new buttons
+        ButtonSin.setText("sin");
+        ButtonSin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSinActionPerformed(evt);
+            }
+        });
+
+        ButtonCos.setText("cos");
+        ButtonCos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCosActionPerformed(evt);
+            }
+        });
+
+        ButtonTan.setText("tan");
+        ButtonTan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonTanActionPerformed(evt);
+            }
+        });
+
+        ButtonSqrt.setText("√");
+        ButtonSqrt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSqrtActionPerformed(evt);
+            }
+        });
+
+        ButtonPercent.setText("%");
+        ButtonPercent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonPercentActionPerformed(evt);
+            }
+        });
+
+        ButtonMPlus.setText("M+");
+        ButtonMPlus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMPlusActionPerformed(evt);
+            }
+        });
+
+        ButtonMMinus.setText("M-");
+        ButtonMMinus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMMinusActionPerformed(evt);
+            }
+        });
+
+        ButtonMR.setText("MR");
+        ButtonMR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMRActionPerformed(evt);
+            }
+        });
+
+        ButtonMC.setText("MC");
+        ButtonMC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMCActionPerformed(evt);
+            }
+        });
+
+        // Configure history display
+        historyDisplay.setColumns(20);
+        historyDisplay.setRows(5);
+        historyDisplay.setEditable(false);
+        jScrollPane2.setViewportView(historyDisplay);
 
         Display.setColumns(20);
         Display.setRows(5);
@@ -678,5 +820,7 @@ public class Calculator extends javax.swing.JFrame {
     private javax.swing.JButton ButtonTimes;
     private javax.swing.JTextArea Display;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea historyDisplay;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
