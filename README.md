@@ -6,6 +6,31 @@ This calculator application was my first Java project, developed during my high 
 
 This is a fully functional calculator with a graphical user interface built using Java Swing. The project was developed as part of my high school coursework and demonstrates fundamental programming concepts including event handling, GUI design, and basic arithmetic operations.
 
+## Development Process
+
+This calculator was built using Apache NetBeans IDE, which provided several advantages for a beginner-friendly development experience:
+
+1. **Visual Form Designer**: 
+   - Used NetBeans' built-in GUI Builder (formerly Matisse)
+   - Drag-and-drop interface for creating the calculator's layout
+   - Automatic generation of Java Swing components and layout code
+   - Real-time preview of the GUI design
+
+2. **Event Handling**:
+   - NetBeans automatically generated event listener methods for each button
+   - Simplified the process of connecting UI elements with their functionality
+   - Built-in code templates for common programming patterns
+
+3. **Project Structure**:
+   - NetBeans created a standard Maven project structure
+   - Managed the project's dependencies and build configuration
+   - Generated necessary project files (pom.xml, form files)
+
+4. **Code Organization**:
+   - The calculator's logic is organized in a single class (`Calculator.java`)
+   - Form design is stored separately (`Calculator.form`)
+   - Clean separation between UI design and business logic
+
 ### Features
 
 - Basic arithmetic operations:
