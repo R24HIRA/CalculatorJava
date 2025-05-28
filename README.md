@@ -70,7 +70,7 @@ This calculator project holds special significance as it was my first Java appli
 
 ## Screenshots
 
-(Screenshots can be added later to showcase the calculator's interface)
+![Calculator Interface](Screenshot%202025-05-28%20at%201.50.47%20PM.png)
 
 ## License
 
