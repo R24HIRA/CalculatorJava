@@ -95,7 +95,9 @@ This calculator project holds special significance as it was my first Java appli
 
 ## Screenshots
 
-![Calculator Interface](Screenshot%202025-05-28%20at%201.50.47%20PM.png)
+<div align="center">
+  <img src="images/calculator-interface.png" alt="Calculator Interface" width="500"/>
+</div>
 
 ## License
 
